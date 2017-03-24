@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>can_shoot = true;
-max_shooting_delay = 4;
+max_shooting_delay = 2;
 is_alive = true;
 machine_gunner_chance = 40;
 rifle_ammo = 12;
@@ -34,6 +34,15 @@ machine_gun_ammo = 30;
 machine_gunner_fire_delay = room_speed/4;
 is_machine_gunner = random(100) &lt; machine_gunner_chance;
 reload_speed = 5 * room_speed;
+
+ammo_text = "";
+if(is_machine_gunner){
+    ammo_text = "Ammo: "+string(machine_gun_ammo);
+}
+else
+{
+    ammo_text = "Ammo: "+string(rifle_ammo);
+}
 </string>
           </argument>
         </arguments>
@@ -58,7 +67,7 @@ reload_speed = 5 * room_speed;
             <kind>1</kind>
             <string>if(can_shoot &amp;&amp; is_alive &amp;&amp; is_machine_gunner){
     can_shoot = false;
-    instance_create(x,y,soldier_bullet);
+    instance_create(x+11,y,soldier_bullet);
     alarm[1] = machine_gunner_fire_delay;
     machine_gun_ammo--;
     if(machine_gun_ammo &lt;= 0){
@@ -67,6 +76,13 @@ reload_speed = 5 * room_speed;
     else{        
         alarm[1] = machine_gunner_fire_delay;
     }
+}
+if(is_machine_gunner){
+    ammo_text = "Ammo: "+string(machine_gun_ammo);
+}
+else
+{
+    ammo_text = "Ammo: "+string(rifle_ammo);
 }
 </string>
           </argument>
@@ -94,7 +110,15 @@ reload_speed = 5 * room_speed;
 if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
     machine_gun_ammo = 30;
     rifle_ammo = 12;
+    if(is_machine_gunner){
+        ammo_text = "Ammo: "+string(machine_gun_ammo);
+    }
+    else
+    {
+        ammo_text = "Ammo: "+string(rifle_ammo);
+    }
 }
+
 </string>
           </argument>
         </arguments>
@@ -119,7 +143,7 @@ if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
             <kind>1</kind>
             <string>if(can_shoot &amp;&amp; is_alive &amp;&amp; !is_machine_gunner){
     can_shoot = false;
-    instance_create(x,y,soldier_bullet);
+    instance_create(x+11,y,soldier_bullet);
     rifle_ammo--;
     if(rifle_ammo &lt;= 0){
         alarm[1] = reload_speed;
@@ -128,9 +152,39 @@ if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
         alarm[1] = random(max_shooting_delay) * room_speed;
     }
 }
+if(is_machine_gunner){
+    ammo_text = "Ammo: "+string(machine_gun_ammo);
+}
+else
+{
+    ammo_text = "Ammo: "+string(rifle_ammo);
+}
 
 //machine_gunner_fire_delay
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_angle=point_direction(x,y,mouse_x,mouse_y)
 </string>
           </argument>
         </arguments>
@@ -155,6 +209,32 @@ if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
             <kind>1</kind>
             <string>is_alive = false;
 image_alpha = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+if(is_alive){
+    draw_text(x, y - sprite_height+20,ammo_text);
+}
 </string>
           </argument>
         </arguments>

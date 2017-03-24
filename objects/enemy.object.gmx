@@ -59,6 +59,7 @@ if(is_machine_gunner){
           <argument>
             <kind>1</kind>
             <string>instance_create(x,y,enemy_bullet);
+
 alarm[1] = machine_gunner_fire_delay;
 </string>
           </argument>
@@ -82,7 +83,9 @@ alarm[1] = machine_gunner_fire_delay;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,enemy_bullet);
+            <string>target = instance_nearest(x,y,soldier);
+instance_create(x,y,enemy_bullet);
+image_angle=point_direction(x,y,target.x,target.y)
 alarm[0] = random(unit_shoot_span) * room_speed;
 
 </string>
@@ -120,6 +123,8 @@ if(y&gt;room_height)
 {
     instance_destroy();
 }
+target = instance_nearest(x,y,soldier);
+image_angle=point_direction(x,y,target.x,target.y)
 </string>
           </argument>
         </arguments>
