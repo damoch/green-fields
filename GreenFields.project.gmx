@@ -7,12 +7,14 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_soldier</sprite>
+    <sprite>sprites\spr_enemy</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\soldier</object>
     <object>objects\controller</object>
+    <object>objects\enemy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\game</room>
