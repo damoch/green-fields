@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enemy_limit = 6;
+            <string>enemy_limit = 10;
 spawn_delay = 2 * room_speed;
 spawn_enemy = false;
 alarm[0] = spawn_delay;
