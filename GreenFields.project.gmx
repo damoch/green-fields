@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprite>sprites\spr_soldier</sprite>
     <sprite>sprites\spr_enemy</sprite>
+    <sprite>sprites\bullet</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,6 +17,7 @@
     <object>objects\controller</object>
     <object>objects\enemy</object>
     <object>objects\enemy_spawner</object>
+    <object>objects\soldier_bullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\game</room>

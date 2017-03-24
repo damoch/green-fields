@@ -66,7 +66,15 @@ if(keyboard_check(ord('D'))){
         soldiers[i].x +=x_speed;
     }
 }
-
+if(mouse_check_button(mb_left)){
+    mx = mouse_x;
+    my = mouse_y;
+    
+    lucky_one = random(array_length_1d(soldiers));
+    current = soldiers[lucky_one];
+    //show_message(string(current))
+    current.alarm[0] = 1;
+}
 </string>
           </argument>
         </arguments>
