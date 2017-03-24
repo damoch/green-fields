@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>can_shoot = true;
 max_shooting_delay = 4;
+is_alive = true;
 </string>
           </argument>
         </arguments>
@@ -72,12 +73,36 @@ max_shooting_delay = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(can_shoot){
+            <string>if(can_shoot &amp;&amp; is_alive){
     can_shoot = false;
     instance_create(x,y,soldier_bullet);
     alarm[1] = random(max_shooting_delay) * room_speed;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="enemy_bullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>is_alive = false;
+image_alpha = 0;
 </string>
           </argument>
         </arguments>

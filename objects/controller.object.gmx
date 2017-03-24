@@ -29,10 +29,7 @@
 {
    soldiers[i] = instance_find(soldier,i);
 }
-
-
-
-x_speed = 1;
+x_speed = 2;
 
 </string>
           </argument>
