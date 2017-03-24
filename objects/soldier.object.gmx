@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>can_shoot = true;
-max_shooting_delay = 2;
+max_shooting_delay = 1;
 is_alive = true;
 machine_gunner_chance = 40;
 rifle_ammo = 12;
@@ -66,24 +66,21 @@ else
           <argument>
             <kind>1</kind>
             <string>if(can_shoot &amp;&amp; is_alive &amp;&amp; is_machine_gunner){
+    audio_play_sound(snd_machine_gun,1,false);
     can_shoot = false;
     instance_create(x+11,y,soldier_bullet);
     alarm[1] = machine_gunner_fire_delay;
     machine_gun_ammo--;
+    ammo_text = "Ammo: "+string(machine_gun_ammo);
     if(machine_gun_ammo &lt;= 0){
-        alarm[1] = reload_speed;
+        alarm[1] = reload_speed;        
+        ammo_text = "Reloading weapon";
     }
     else{        
         alarm[1] = machine_gunner_fire_delay;
     }
 }
-if(is_machine_gunner){
-    ammo_text = "Ammo: "+string(machine_gun_ammo);
-}
-else
-{
-    ammo_text = "Ammo: "+string(rifle_ammo);
-}
+
 </string>
           </argument>
         </arguments>
@@ -144,21 +141,19 @@ if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
             <string>if(can_shoot &amp;&amp; is_alive &amp;&amp; !is_machine_gunner){
     can_shoot = false;
     instance_create(x+11,y,soldier_bullet);
-    rifle_ammo--;
+    audio_play_sound(snd_rifle,1,false);
+    rifle_ammo--;    
+    ammo_text = "Ammo: "+string(rifle_ammo);
+    
     if(rifle_ammo &lt;= 0){
         alarm[1] = reload_speed;
+        ammo_text = "Reloading weapon";
     }
     else{
         alarm[1] = random(max_shooting_delay) * room_speed;
     }
 }
-if(is_machine_gunner){
-    ammo_text = "Ammo: "+string(machine_gun_ammo);
-}
-else
-{
-    ammo_text = "Ammo: "+string(rifle_ammo);
-}
+
 
 //machine_gunner_fire_delay
 
@@ -209,6 +204,8 @@ else
             <kind>1</kind>
             <string>is_alive = false;
 image_alpha = 0;
+rifle_ammo = 12;
+machine_gun_ammo = 30;
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (i = 0; i &lt; instance_number(soldier); i += 1)
+            <string>//sounds from..http://opengameart.org/content/chaingun-pistol-rifle-shotgun-shots
+for (i = 0; i &lt; instance_number(soldier); i += 1)
 {
    soldiers[i] = instance_find(soldier,i);
 }
