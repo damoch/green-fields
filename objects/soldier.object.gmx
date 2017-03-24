@@ -29,8 +29,11 @@
 max_shooting_delay = 4;
 is_alive = true;
 machine_gunner_chance = 40;
+rifle_ammo = 12;
+machine_gun_ammo = 30;
 machine_gunner_fire_delay = room_speed/4;
 is_machine_gunner = random(100) &lt; machine_gunner_chance;
+reload_speed = 5 * room_speed;
 </string>
           </argument>
         </arguments>
@@ -57,6 +60,13 @@ is_machine_gunner = random(100) &lt; machine_gunner_chance;
     can_shoot = false;
     instance_create(x,y,soldier_bullet);
     alarm[1] = machine_gunner_fire_delay;
+    machine_gun_ammo--;
+    if(machine_gun_ammo &lt;= 0){
+        alarm[1] = reload_speed;
+    }
+    else{        
+        alarm[1] = machine_gunner_fire_delay;
+    }
 }
 </string>
           </argument>
@@ -81,6 +91,10 @@ is_machine_gunner = random(100) &lt; machine_gunner_chance;
           <argument>
             <kind>1</kind>
             <string>can_shoot = true;
+if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
+    machine_gun_ammo = 30;
+    rifle_ammo = 12;
+}
 </string>
           </argument>
         </arguments>
@@ -106,7 +120,13 @@ is_machine_gunner = random(100) &lt; machine_gunner_chance;
             <string>if(can_shoot &amp;&amp; is_alive &amp;&amp; !is_machine_gunner){
     can_shoot = false;
     instance_create(x,y,soldier_bullet);
-    alarm[1] = random(max_shooting_delay) * room_speed;
+    rifle_ammo--;
+    if(rifle_ammo &lt;= 0){
+        alarm[1] = reload_speed;
+    }
+    else{
+        alarm[1] = random(max_shooting_delay) * room_speed;
+    }
 }
 
 //machine_gunner_fire_delay
