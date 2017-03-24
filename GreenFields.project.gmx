@@ -8,7 +8,8 @@
   <sprites name="sprites">
     <sprite>sprites\spr_soldier</sprite>
     <sprite>sprites\spr_enemy</sprite>
-    <sprite>sprites\bullet</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_enemy_bullet</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
