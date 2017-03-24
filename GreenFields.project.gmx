@@ -18,6 +18,7 @@
     <object>objects\enemy</object>
     <object>objects\enemy_spawner</object>
     <object>objects\soldier_bullet</object>
+    <object>objects\enemy_bullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\game</room>
