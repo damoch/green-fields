@@ -17,12 +17,13 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\soldier</object>
     <object>objects\controller</object>
     <object>objects\enemy</object>
-    <object>objects\enemy_spawner</object>
-    <object>objects\soldier_bullet</object>
     <object>objects\enemy_bullet</object>
+    <object>objects\enemy_spawner</object>
+    <object>objects\machinegun_bullet</object>
+    <object>objects\rifle_bullet</object>
+    <object>objects\soldier</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\game</room>
