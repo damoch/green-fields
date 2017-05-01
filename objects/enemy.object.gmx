@@ -131,7 +131,7 @@ image_angle=point_direction(x,y,target.x,target.y)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="machinegun_bullet">
+    <event eventtype="4" ename="rifle_bullet">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -154,7 +154,7 @@ image_angle=point_direction(x,y,target.x,target.y)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="rifle_bullet">
+    <event eventtype="4" ename="machinegun_bullet">
       <action>
         <libid>1</libid>
         <id>603</id>

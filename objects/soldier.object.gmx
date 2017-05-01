@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>can_shoot = true;
+            <string>health_points = 4;
+can_shoot = true;
 max_shooting_delay = 1;
 is_alive = true;
 machine_gunner_chance = 40;
@@ -71,6 +72,7 @@ else
     audio_play_sound(snd_machine_gun,1,false);
     can_shoot = false;
     instance_create(x+11,y,ammunition);
+    instance_create(x+11,y-250,weapon_fire);
     alarm[1] = machine_gunner_fire_delay;
     machine_gun_ammo--;
     ammo_text = "Ammo: "+string(machine_gun_ammo);
@@ -204,10 +206,17 @@ if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>is_alive = false;
-image_alpha = 0;
-rifle_ammo = 12;
-machine_gun_ammo = 30;
+            <string>with(other){
+    instance_destroy();
+}
+health_points--;
+if(health_points == 0){
+    is_alive = false;
+    image_alpha = 0;
+    rifle_ammo = 12;
+    machine_gun_ammo = 30;  
+}
+
 </string>
           </argument>
         </arguments>

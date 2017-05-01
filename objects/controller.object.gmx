@@ -120,6 +120,7 @@ if(restart){
     {
         with(soldiers[i]){
         is_alive = true;
+        health_points = 4;
         image_alpha = 1;
         }
     }
