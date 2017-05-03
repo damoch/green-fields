@@ -72,7 +72,8 @@ else
     audio_play_sound(snd_machine_gun,1,false);
     can_shoot = false;
     instance_create(x+11,y,ammunition);
-    instance_create(x+11,y-250,weapon_fire);
+    fire = instance_create(x + lengthdir_x(32, image_angle-25), y + lengthdir_y(32, image_angle-25), weapon_fire);
+    fire.image_angle = image_angle - 90;
     alarm[1] = machine_gunner_fire_delay;
     machine_gun_ammo--;
     ammo_text = "Ammo: "+string(machine_gun_ammo);
@@ -144,8 +145,12 @@ if(machine_gun_ammo &lt;= 0 || rifle_ammo &lt;= 0){
             <kind>1</kind>
             <string>if(can_shoot &amp;&amp; is_alive &amp;&amp; !is_machine_gunner){
     can_shoot = false;
+    
+    fire = instance_create(x + lengthdir_x(32, image_angle-25), y + lengthdir_y(32, image_angle-25), weapon_fire);
+    fire.image_angle = image_angle - 90;
     instance_create(x+11,y,ammunition);
     audio_play_sound(snd_rifle,1,false);
+    
     rifle_ammo--;    
     ammo_text = "Ammo: "+string(rifle_ammo);
     
